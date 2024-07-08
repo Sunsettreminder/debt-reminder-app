@@ -1,0 +1,9 @@
+<div *ngIf="showConfirmation" class="popup">
+    <div class="popup-content">
+        <p>¿Estás seguro de querer realizar esta acción?</p>
+        <div class="popup-buttons">
+            <button class="btn btn-primary" (click)="confirmAction()">Confirmar</button>
+            <button class="btn btn-secondary" (click)="cancelAction()">Cancelar</button>
+        </div>
+    </div>
+</div>

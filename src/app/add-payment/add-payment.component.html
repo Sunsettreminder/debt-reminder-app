@@ -1,0 +1,57 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h3 class="card-title">Registrar Deuda</h3>
+                <p class="card-category">Por favor, complete los siguientes campos:</p>
+            </div>
+            <div class="card-body">
+                <form (submit)="submitForm()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tipoPago">Tipo de Pago</label>
+                                <select id="tipoPago" class="form-control" required [(ngModel)]="tipoPago" name="tipoPago" (change)="onChangeTipoPago()">
+                                    <option value="Boleta">Boleta</option>
+                                    <option value="Factura">Factura</option>
+                                    <option value="EnCuotas">En Cuotas</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="numeroDocumento">Número de Documento</label>
+                                <input type="text" class="form-control" id="numeroDocumento" required [(ngModel)]="numeroDocumento" name="numeroDocumento">
+                            </div>
+                            <div class="form-group">
+                                <label for="fechaVencimiento">Fecha de Vencimiento</label>
+                                <input type="date" class="form-control" id="fechaVencimiento" [(ngModel)]="fechaVencimiento" name="fechaVencimiento">
+                            </div>
+                            <div class="form-group" *ngIf="tipoPago === 'EnCuotas'">
+                                <label for="periodoPago">Periodo de Pago (días)</label>
+                                <input type="number" class="form-control" id="periodoPago" required [(ngModel)]="periodoPago" name="periodoPago">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="empresa">Empresa o Compañía</label>
+                                <input type="text" class="form-control" id="empresa" required [(ngModel)]="empresa" name="empresa">
+                            </div>
+                            <div class="form-group">
+                                <label for="monto">Monto (S/.)</label>
+                                <input type="number" class="form-control" id="monto" required [(ngModel)]="monto" name="monto">
+                            </div>
+                            <div class="form-group" *ngIf="tipoPago === 'EnCuotas'">
+                                <label for="cuotas">Cantidad de Cuotas</label>
+                                <input type="number" class="form-control" id="cuotas" required [(ngModel)]="cuotas" name="cuotas">
+                            </div>
+                            <div class="form-group" *ngIf="tipoPago === 'EnCuotas'">
+                                <label for="interes">Interés (%)</label>
+                                <input type="number" class="form-control" id="interes" required [(ngModel)]="interes" name="interes">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrar Deuda</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

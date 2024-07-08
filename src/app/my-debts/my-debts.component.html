@@ -1,0 +1,94 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                
+                
+                <!-- Tabla Deudas mensuales -->
+                <div class="card">
+                    <div class="card-header card-header-danger d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4 class="card-title">Deudas mensuales</h4>
+                            <p class="card-category">Aquí se muestran sus deudas categorizadas por mes</p>
+                        </div>
+                        <div class="form-group mb-0 mes-selector">
+                            <label for="mesSeleccionado" class="mr-2">Selecciona el mes:</label>
+                            <select id="mesSeleccionado" class="form-control mr-2" [(ngModel)]="mesSeleccionado" (change)="filtrarDeudas()">
+                              <option *ngFor="let mes of meses" [value]="mes">{{ mes }}</option>
+                            </select>
+                            <select id="anioSeleccionado" class="form-control" [(ngModel)]="anioSeleccionado" (change)="filtrarDeudas()">
+                              <option *ngFor="let anio of anios" [value]="anio">{{ anio }}</option>
+                            </select>
+                          </div>
+                          
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <tr>
+                                        <th>Número de boleta</th>
+                                        <th>Empresa</th>
+                                        <th>Fecha de vencimiento</th>
+                                        <th>Monto S/.</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let deuda of deudasFiltradas; let i = index">
+                                        <td *ngIf="editIndex !== i">{{ deuda.debtId }}</td>
+                                        <td *ngIf="editIndex !== i">{{ deuda.company }}</td>
+                                        <td *ngIf="editIndex !== i">{{ deuda.dueDate }}</td>
+                                        <td *ngIf="editIndex !== i">{{ deuda.amount }}</td>
+                                        <td *ngIf="editIndex !== i">
+                                            <span [ngClass]="getClass(deuda.dueDate, deuda.status)"></span>
+                                        </td>
+                                        <td *ngIf="editIndex !== i">
+                                            <button class="btn btn-primary" (click)="confirmarPagar(deuda)">Pagar</button>
+                                            <button class="btn btn-primary" (click)="editDeuda(i)">Editar</button>
+                                            <button class="btn btn-danger" (click)="confirmarEliminar(deuda)">Eliminar</button>
+                                        </td>
+
+                                        <!-- Formulario de edición -->
+                                        <td *ngIf="editIndex === i">
+                                            <input [(ngModel)]="editDeudaData.debtId" disabled />
+                                        </td>
+                                        <td *ngIf="editIndex === i">
+                                            <input [(ngModel)]="editDeudaData.company" />
+                                        </td>
+                                        <td *ngIf="editIndex === i">
+                                            <input [(ngModel)]="editDeudaData.dueDate" />
+                                        </td>
+                                        <td *ngIf="editIndex === i">
+                                            <input [(ngModel)]="editDeudaData.amount" />
+                                        </td>
+                                        <td *ngIf="editIndex === i">
+                                            <span [ngClass]="getClass(editDeudaData.dueDate, editDeudaData.status)"></span>
+                                        </td>
+                                        <td *ngIf="editIndex === i">
+                                            <button class="btn btn-primary" (click)="saveEdit()">Guardar</button>
+                                            <button class="btn btn-danger" (click)="cancelEdit()">Cancelar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Popup de confirmación -->
+<div class="overlay" *ngIf="confirmacionVisible">
+    <div class="popup">
+        <h3>{{ confirmacionMensaje }}</h3>
+        <div class="btn-container">
+            <button class="btn btn-primary" (click)="realizarAccion()">Confirmar</button>
+            <button class="btn btn-secondary" (click)="cancelarAccion()">Cancelar</button>
+        </div>
+    </div>
+</div>

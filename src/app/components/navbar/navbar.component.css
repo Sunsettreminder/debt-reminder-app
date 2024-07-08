@@ -1,0 +1,22 @@
+.nav-item.dropdown .dropdown-menu {
+    display: none;
+  }
+  
+  .nav-item.dropdown.open .dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown-menu-right {
+    right: 0;
+    left: auto;
+  }
+  
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .dropdown-item i.material-icons {
+    margin-right: 8px;
+  }
+  

@@ -1,0 +1,112 @@
+/* Alinea el texto de los encabezados y las celdas de acciones al centro */
+.table thead th,
+.table tbody td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Ajusta el margen de los botones */
+.btn {
+    margin-right: 5px;
+}
+
+/* Estiliza los botones de acción */
+.btn-primary {
+    background-color: #6a0dad; /* Morado */
+    border-color: #6a0dad;
+}
+
+.btn-danger {
+    background-color: #d9534f; /* Rojo */
+    border-color: #d9534f;
+}
+
+/* Estilo para el selector de mes */
+.mes-selector {
+    display: flex;
+    align-items: center;
+}
+
+.mes-selector label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.mes-selector select {
+    width: auto;
+    padding: 5px 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+}
+
+/* Estilos para el estado de las deudas */
+.estado-deuda {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+
+
+.estado-deuda-rojo {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; /* Para crear un círculo */
+    margin-right: 5px;
+    background-color: red; /* Color para deudas vencidas */
+}
+
+.estado-deuda-verde {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; /* Para crear un círculo */
+    margin-right: 5px;
+    background-color: green; /* Color para deudas pagadas */
+}
+
+.estado-deuda-amarillo {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; /* Para crear un círculo */
+    margin-right: 5px;
+    background-color: yellow; /* Color para deudas próximas a vencer */
+}
+
+.estado-deuda-negro {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; /* Para crear un círculo */
+    margin-right: 5px;
+    background-color: black; /* Color para deudas que vencen luego de 7 días */
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegúrate de que el overlay esté por encima de otros elementos */
+}
+
+.popup {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.btn-container {
+    margin-top: 20px;
+}

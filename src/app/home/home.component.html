@@ -1,0 +1,20 @@
+<div class="main-content">
+  <!-- Contenedor de bienvenida -->
+  <div class="welcome-container">
+    <h1 class="welcome-text">Hola, <strong>{{ username }}</strong></h1>
+    <p class="date-text">{{ formattedDate }}</p>
+  </div>
+
+  
+
+  <!-- Pop-up de confirmación -->
+  <div *ngIf="showConfirmation" class="popup">
+    <div class="popup-content">
+      <p>¿Estás seguro de querer realizar esta acción?</p>
+      <div class="popup-buttons">
+        <button class="btn btn-primary" (click)="confirmAction()">Confirmar</button>
+        <button class="btn btn-secondary" (click)="cancelAction()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
